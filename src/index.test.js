@@ -24,6 +24,7 @@ describe('reduxHistoryPushMiddleware', () => {
         }
       }
       store.dispatch(action)
+      expect(true).toBe(false)
       expect(history.push).toHaveBeenCalledWith(action.meta.pushToRoute)
     })
 

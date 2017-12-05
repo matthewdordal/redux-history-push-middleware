@@ -7,6 +7,8 @@ const reduxHistoryPushMiddleware = (
     reMatcher = new RegExp(matcher)
   }
 
+  let x
+
   return store => next => action => {
     if (typeof history !== 'object' || typeof history.push !== 'function') {
       return next(action)
