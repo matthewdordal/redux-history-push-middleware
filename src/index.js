@@ -12,7 +12,8 @@ const reduxHistoryPushMiddleware = (
       return next(action)
     }
 
-    var hasMetaKey =
+    const hasMetaKey =
+      action &&
       action.meta &&
       action.meta[metaKey] &&
       typeof action.meta[metaKey] === 'string'
