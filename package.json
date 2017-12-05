@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "repository": "matthewdordal/redux-history-push-middleware",
   "scripts": {
-    "babel": "babel src --ignore '*.test.js,__tests__/*' -d dist",
+    "build": "babel src --ignore '*.test.js,__tests__/*' -d dist",
     "format": "npx prettier-standard 'src/**/*.js'",
     "lint": "npx eslint src/**/*.js --fix",
     "precommit": "lint-staged",
@@ -16,7 +16,6 @@
   "lint-staged": {
     "linters": {
       "src/**/*.js": [
-        "npm run lint",
         "npm run format",
         "npm run test:unit",
         "git add"
