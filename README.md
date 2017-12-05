@@ -4,11 +4,11 @@ history.push [middleware](https://redux.js.org/docs/advanced/Middleware.html) fo
 
 ## Motivaton
 
-In some react/redux applications that use a user must transition to a route after some action has been dispatched. A HTTP Post success route transition is one possible example where this need can arise. This middleware seeks to establish a clear pattern for calling `history.push(route)` in these situations.
+In some react/redux applications a transition to a route after some action has been dispatched must occur. This middleware seeks to establish a clear pattern for calling `history.push(route)` in these situations.
 
-By looking at an action.meta property we can determine if any action should cause a transition to a new route.
+By using the optional `meta` property described by [Flux Standard Actions](https://github.com/acdlite/flux-standard-action#actions) redux middleware can determine if any action should cause a transition to a new route.
 
-## Setup
+## `reduxHistoryPushMiddleware(history, [options])`
 
 Create a redux store
 
@@ -36,9 +36,7 @@ export default store;
 An action creator
 
 ```js
-// By default redux-history-push-middleware looks for the meta.pushToRoute
-// property on actions. See the options section for how this can be
-// configured.
+// By default redux-history-push-middleware looks for the action.meta.pushToRoute property on actions.
 const createItemFulfilled = (payload) => ({
   type: 'CREATE_ITEM_FULFILLED',
   payload,
@@ -50,7 +48,7 @@ const createItemFulfilled = (payload) => ({
 
 ## history parameter
 
-A [history](https://github.com/ReactTraining/history) object.
+A [history](https://github.com/ReactTraining/history) object with a `push` method.
 
 ## Options
 
@@ -65,7 +63,7 @@ A [history](https://github.com/ReactTraining/history) object.
 
 **metaKey**
 
-The `action.meta` property must be an object. If `metaKey` is not provided the default will be `pushToRoute`. If metaKey is provided then that value should be used as the key to hold the route string in the meta object.
+The property to search for in the `action.meta` object of actions. It's value should be a string that matches a route. Defaults to `pushToRoute`.
 
 Example:
 
@@ -90,7 +88,7 @@ const createItemFulfilled = payload => ({
 
 **matcher**
 
-A string that is used for creating a regular expression to match `action.type` against. `history.push(route)` will only be called if the `action.type` matches the regular expression and the action.meta object contains the route key.
+A string that is used for creating a regular expression to match `action.type` against. `history.push(route)` will only be called if the `action.type` matches the regular expression and the `action.meta` object contains the key metaKey.
 
 Example:
 
@@ -99,7 +97,7 @@ Inside createStore.js
 ```js
 In createStore
 
-const reduxHistoryPush = reduxHistoryPushMiddleware(history, { matcher: '_FULFILLED$'});
+const reduxHistoryPush = reduxHistoryPushMiddleware(history, { matcher: '_FULFILLED$' });
 ```
 
 actionCreator.js
