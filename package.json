@@ -1,0 +1,40 @@
+{
+  "name": "redux-history-push-middleware",
+  "version": "0.0.1",
+  "description": "Call history.push on certain redux actions to navigate to a new route.",
+  "authors": "matthewdordal <matthewdordal@users.noreply.github.com>",
+  "main": "dist/index.js",
+  "repository": "matthewdordal/redux-history-push-middleware",
+  "scripts": {
+    "babel": "babel src --ignore '*.test.js,__tests__/*' -d dist",
+    "format": "npx prettier-standard 'src/**/*.js'",
+    "lint": "npx eslint src/**/*.js --fix",
+    "precommit": "lint-staged",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.js": [
+        "lint",
+        "prettier-standard",
+        "test",
+        "git add"
+      ]
+    }
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.12.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^21.2.1",
+    "prettier-standard": "^7.0.3",
+    "redux": "^3.7.2",
+    "rxjs": "^5.4.3"
+  }
+}
