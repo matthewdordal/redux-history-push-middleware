@@ -10,14 +10,15 @@
     "format": "npx prettier-standard 'src/**/*.js'",
     "lint": "npx eslint src/**/*.js --fix",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test:unit": "jest",
+    "test": "npm run lint && npm run test:unit"
   },
   "lint-staged": {
     "linters": {
       "src/**/*.js": [
-        "lint",
-        "prettier-standard",
-        "test",
+        "npm run lint",
+        "npm run format",
+        "npm run test:unit",
         "git add"
       ]
     }
@@ -32,7 +33,9 @@
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "husky": "^0.14.3",
     "jest": "^21.2.1",
+    "lint-staged": "^6.0.0",
     "prettier-standard": "^7.0.3",
     "redux": "^3.7.2",
     "rxjs": "^5.4.3"
