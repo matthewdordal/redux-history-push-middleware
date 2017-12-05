@@ -95,8 +95,6 @@ Example:
 Inside createStore.js
 
 ```js
-In createStore
-
 const reduxHistoryPush = reduxHistoryPushMiddleware(history, { matcher: '_FULFILLED$' });
 ```
 
