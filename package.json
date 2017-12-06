@@ -1,10 +1,13 @@
 {
   "name": "redux-history-push-middleware",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Call history.push on certain redux actions to navigate to a new route.",
-  "authors": "matthewdordal <matthewdordal@users.noreply.github.com>",
+  "author": "Matthew Dordal",
   "main": "dist/index.js",
-  "repository": "matthewdordal/redux-history-push-middleware",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthewdordal/redux-history-push-middleware.git"
+  },
   "scripts": {
     "build": "babel src --ignore '*.test.js,__tests__/*' -d dist",
     "format": "npx prettier-standard 'src/**/*.js'",
