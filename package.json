@@ -1,6 +1,6 @@
 {
   "name": "redux-history-push-middleware",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Call history.push on certain redux actions to navigate to a new route.",
   "author": "Matthew Dordal",
   "main": "dist/index.js",
