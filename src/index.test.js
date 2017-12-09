@@ -110,5 +110,22 @@ describe('reduxHistoryPushMiddleware', () => {
       store.dispatch(action)
       expect(history.push).not.toHaveBeenCalledWith()
     })
+
+    it('does not call history.push if a matcher regular expression is provided, and matches, but there is no meta key on the action', () => {
+      const store = createStore(
+        () => ({}),
+        applyMiddleware(
+          reduxHistoryPushMiddleware(history, { match: '_TEST$' })
+        )
+      )
+
+      const action = {
+        type: 'SOMETHING_HAPPENED_TEST',
+        payload: 'data'
+      }
+
+      store.dispatch(action)
+      expect(history.push).not.toHaveBeenCalledWith()
+    })
   })
 })
