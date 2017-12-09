@@ -18,11 +18,9 @@ const reduxHistoryPushMiddleware = (
       action.meta[metaKey] &&
       typeof action.meta[metaKey] === 'string'
 
-    if (reMatcher && reMatcher.test(action.type)) {
-      if (hasMetaKey) {
-        history.push(action.meta[metaKey])
-        return next(action)
-      }
+    if (reMatcher && reMatcher.test(action.type) && hasMetaKey) {
+      history.push(action.meta[metaKey])
+      return next(action)
     } else if (hasMetaKey) {
       history.push(action.meta[metaKey])
       return next(action)

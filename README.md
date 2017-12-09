@@ -9,10 +9,10 @@ npm install --save redux-history-push-middleware
 ```
 
 ```js
-yarn add redux-history-push-middlware
+yarn add redux-history-push-middleware
 ```
 
-## Motivaton
+## Motivation
 
 In some react/redux applications a transition to a route after some action has been dispatched must occur. This middleware seeks to establish a clear pattern for calling `history.push(route)` in these situations.
 
